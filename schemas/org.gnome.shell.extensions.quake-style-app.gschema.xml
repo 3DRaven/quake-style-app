@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.quake-style-app"
+          path="/org/gnome/shell/extensions/quake-style-app/">
+
+    <key name="command" type="s">
+      <default>'foot --app-id=quake-style-app --title=dropdown'</default>
+      <summary>Command to launch</summary>
+      <description>
+        The application launched as the dropdown — any app, not only foot.
+        Parsed like a shell command line. The window is found via the "app-id"
+        key below, so make sure the command sets that class
+        (e.g. foot --app-id=quake-style-app, or another terminal's --class flag).
+      </description>
+    </key>
+
+    <key name="app-id" type="s">
+      <default>'quake-style-app'</default>
+      <summary>Window app-id / class to match</summary>
+      <description>
+        The Wayland app-id (or WM_CLASS) of the launched window, used to find and
+        toggle it. Must match what the command above actually sets.
+      </description>
+    </key>
+
+    <key name="height-fraction" type="d">
+      <default>0.65</default>
+      <range min="0.1" max="1.0"/>
+      <summary>Height fraction</summary>
+      <description>Window height as a fraction of the monitor height.</description>
+    </key>
+
+    <key name="width-fraction" type="d">
+      <default>1.0</default>
+      <range min="0.1" max="1.0"/>
+      <summary>Width fraction</summary>
+      <description>Window width as a fraction of the monitor width (centered horizontally).</description>
+    </key>
+
+    <key name="position" type="s">
+      <choices>
+        <choice value="top"/>
+        <choice value="bottom"/>
+      </choices>
+      <default>'top'</default>
+      <summary>Position</summary>
+      <description>Whether the window drops from the top or rises from the bottom.</description>
+    </key>
+
+    <key name="bar-position" type="s">
+      <choices>
+        <choice value="top"/>
+        <choice value="bottom"/>
+      </choices>
+      <default>'top'</default>
+      <summary>Tab bar side</summary>
+      <description>Whether the tab bar is above or below the terminal.</description>
+    </key>
+
+    <key name="bar-height" type="i">
+      <default>60</default>
+      <range min="20" max="160"/>
+      <summary>Tab bar height (px)</summary>
+      <description>Height of the native tab bar, in logical pixels.</description>
+    </key>
+
+    <key name="bar-color" type="s">
+      <default>'#0d0208'</default>
+      <summary>Tab bar background color</summary>
+      <description>Background of the tab bar (also the active tab's text color).</description>
+    </key>
+
+    <key name="active-color" type="s">
+      <default>'#44475A'</default>
+      <summary>Active tab color</summary>
+      <description>Background color of the active tab.</description>
+    </key>
+
+    <key name="text-color" type="s">
+      <default>'#F8F8F2'</default>
+      <summary>Tab text color</summary>
+      <description>Text color of inactive tabs.</description>
+    </key>
+
+    <key name="use-tmux" type="b">
+      <default>false</default>
+      <summary>Run under tmux (enable tabs)</summary>
+      <description>
+        When on, the app is launched under tmux so it has tabs (tmux windows).
+        The NewTab/CloseTab/NextTab/PrevTab D-Bus methods control them — bind
+        hotkeys to them in GNOME Settings.
+      </description>
+    </key>
+
+    <key name="tmux-session" type="s">
+      <default>'dropdown'</default>
+      <summary>tmux session name</summary>
+      <description>The tmux session created for and controlled by the dropdown.</description>
+    </key>
+
+    <key name="on-window-close" type="s">
+      <choices>
+        <choice value="kill"/>
+        <choice value="detach"/>
+      </choices>
+      <default>'detach'</default>
+      <summary>On window close (Alt+F4)</summary>
+      <description>
+        What happens when the dropdown window is closed: "kill" ends the tmux session
+        and its processes; "detach" leaves it running in the background so the next
+        open reattaches (typed text / state preserved).
+      </description>
+    </key>
+
+    <key name="fill-background" type="b">
+      <default>false</default>
+      <summary>Background behind the terminal</summary>
+      <description>
+        Draw a solid background across the whole dropdown area, behind the terminal
+        window, so any gap (e.g. foot's cell-quantization on the right) shows this
+        instead of the desktop.
+      </description>
+    </key>
+
+    <key name="fill-color" type="s">
+      <default>'#0d0208'</default>
+      <summary>Background color</summary>
+      <description>Color of the background drawn behind the terminal.</description>
+    </key>
+
+    <key name="toggle-hotkey" type="as">
+      <default><![CDATA[['<Control>F10']]]></default>
+      <summary>Toggle the dropdown</summary>
+      <description>Keyboard shortcut that shows/hides the dropdown.</description>
+    </key>
+
+    <key name="new-tab-hotkey" type="as">
+      <default><![CDATA[['<Control><Shift>t']]]></default>
+      <summary>New tab</summary>
+      <description>Keyboard shortcut that opens a new tab (tmux window).</description>
+    </key>
+
+    <key name="close-tab-hotkey" type="as">
+      <default>[]</default>
+      <summary>Close tab</summary>
+      <description>Keyboard shortcut that closes the current tab.</description>
+    </key>
+
+    <key name="next-tab-hotkey" type="as">
+      <default>[]</default>
+      <summary>Next tab</summary>
+      <description>Keyboard shortcut that switches to the next tab.</description>
+    </key>
+
+    <key name="prev-tab-hotkey" type="as">
+      <default>[]</default>
+      <summary>Previous tab</summary>
+      <description>Keyboard shortcut that switches to the previous tab.</description>
+    </key>
+
+    <key name="icon" type="s">
+      <default>''</default>
+      <summary>Window icon</summary>
+      <description>
+        Icon name (or absolute path) for the dropdown window in Alt+Tab / the dock.
+        Empty = use the launched application's own icon (e.g. foot's), found via its
+        .desktop file.
+      </description>
+    </key>
+
+    <key name="tmux-config" type="s">
+      <default>''</default>
+      <summary>Extra tmux config (dropdown only)</summary>
+      <description>
+        Extra tmux configuration applied ONLY to the dropdown's private, isolated
+        tmux server. The host ~/.tmux.conf is never loaded. One tmux command per
+        line, e.g. "set -g mouse on".
+      </description>
+    </key>
+
+  </schema>
+</schemalist>

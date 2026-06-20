@@ -1,0 +1,12 @@
+# editor / OS cruft
+*~
+*.swp
+*.swo
+.DS_Store
+gschemas.compiled
+
+# packed bundles
+dist/
+
+# local roadmap, not published
+TODO.md

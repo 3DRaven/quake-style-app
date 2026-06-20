@@ -1,0 +1,23 @@
+# foot.ini — example config for the Quake Style App extension.
+# Copy to ~/.config/foot/foot.ini and tweak. Reference: man 5 foot.ini
+
+# JetBrains Mono with ligatures (calt). Adjust size to taste.
+# Font is optional (Apache-2.0): https://github.com/JetBrains/JetBrainsMono
+# If not installed, replace with any monospace, e.g. "monospace:size=12".
+font=JetBrains Mono:size=13:fontfeatures=calt
+
+# Borderless: no title bar / decorations (GNOME/Wayland draws none server-side).
+[csd]
+preferred=none
+
+[colors]
+# Near-black background, light-gray text for normal commands and output.
+# Color the PROMPT in your shell (PS1), not here — see README.
+background=0d0208
+foreground=c8c8c8
+# Block cursor in the same gray as the text.
+cursor=0d0208 c8c8c8
+# Mouse selection.
+selection-foreground=0d0208
+selection-background=00ff41
+# ANSI palette left at foot defaults (normal ls / program colors).

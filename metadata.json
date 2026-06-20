@@ -1,0 +1,8 @@
+{
+  "uuid": "quake-style-app@i3draven.github.io",
+  "name": "Quake Style App",
+  "description": "Quake-style dropdown for any application (foot by default) on Wayland. A configurable hotkey drops the window from the top or bottom at a configurable size; it auto-hides on focus loss. Optional native tab bar backed by a private, isolated tmux server, a configurable window icon, and Dracula colors. All shortcuts are the extension's own (no system shortcuts touched) and everything is configurable in the extension Preferences.",
+  "shell-version": ["47", "48", "49", "50"],
+  "settings-schema": "org.gnome.shell.extensions.quake-style-app",
+  "url": "https://github.com/3DRaven/quake-style-app"
+}

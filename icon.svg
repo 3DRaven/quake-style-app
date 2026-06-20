@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <defs>
+    <linearGradient id="body" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3b3e4d"/>
+      <stop offset="1" stop-color="#21222c"/>
+    </linearGradient>
+  </defs>
+
+  <!-- terminal body -->
+  <rect x="26" y="44" width="204" height="168" rx="26" fill="url(#body)" stroke="#15161d" stroke-width="3"/>
+
+  <!-- title bar (dropdown chrome) -->
+  <path d="M26 70 a26 26 0 0 1 26-26 h152 a26 26 0 0 1 26 26 v8 H26 Z" fill="#191a21"/>
+  <circle cx="52" cy="60" r="6.5" fill="#ff5555"/>
+  <circle cx="74" cy="60" r="6.5" fill="#f1fa8c"/>
+  <circle cx="96" cy="60" r="6.5" fill="#50fa7b"/>
+
+  <!-- prompt chevron -->
+  <path d="M66 122 l30 24 l-30 24" fill="none" stroke="#50fa7b" stroke-width="13"
+        stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- input line / cursor -->
+  <rect x="112" y="158" width="78" height="13" rx="6.5" fill="#bd93f9"/>
+
+  <!-- dropdown hint: small chevron above -->
+  <path d="M112 26 l16 12 l16 -12" fill="none" stroke="#6272a4" stroke-width="9"
+        stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

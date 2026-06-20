@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Quake Style App
+GenericName=Dropdown Terminal
+Comment=Quake-style dropdown terminal
+Icon=quake-style-app
+StartupWMClass=quake-style-app
+Categories=System;TerminalEmulator;
+Terminal=false
+NoDisplay=true
+Exec=true
